@@ -1,0 +1,92 @@
+//// -- LEVEL 1
+//// -- Schemas, Tables and References
+
+// Creating tables
+// You can define the tables with full schema names
+Table Preprocessed {
+  user_id int [pk]
+  location varchar
+  age int
+  isbn varchar [pk]
+  rating int (0, 5)
+  book_title varchar
+  book_author varchar
+  year_of_publication int
+  publisher varchar
+  
+  // links to image location
+  img_s varchar
+  img_m varchar
+  img_l varchar
+  
+  summary varchar
+  language varchar
+  category list
+  
+  // parsed Location from 'location'
+  city varchar
+  state varchar
+  country varchar
+}
+
+// If schema name is omitted, it will default to "public" schema.
+Table users as U {
+  user_id int [pk, increment]
+  location varchar // comma-separated
+  age int
+}
+
+Table dim_users {
+  user_id int [pk, increment, ref: < fact.user_id]
+  city varchar
+  state varchar
+  country varchar
+  age int
+}
+
+Table dim_author {
+  author_id varchar [pk, ref: < fact.author_id]
+  author_name varchar
+}
+
+Table dim_books as b {
+  ISBN varchar [pk, ref: < fact.ISBN]
+  title varchar
+  year_of_publication varchar
+  publisher varchar
+  summary varchar
+}
+
+Table dim_language {
+  lid varchar [pk, ref: < fact.language_id]
+  language varchar
+}
+
+Table dim_category {
+  cid varchar [pk, ref: < fact.category_id]
+  category varchar
+}
+
+Table ratings as R {
+  user_id varchar
+  ISBN varchar
+  book_rating int
+  Indexes {
+    (user_id, ISBN) [pk]
+  } 
+}
+Ref: Preprocessed.user_id > U.user_id
+
+Table fact as F {
+  user_id varchar
+  ISBN varchar
+  author_id varchar
+  language_id varchar
+  category_id varchar
+  
+  // facts
+  QTY_rating int
+  AVG_rating float
+  MAX_rating float
+  MIN_rating float
+}
