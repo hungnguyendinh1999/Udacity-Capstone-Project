@@ -8,6 +8,9 @@ This project is done
 Data Source: 
 [Book Rating Dataset from Kaggle](https://www.kaggle.com/datasets/ruchi798/bookcrossing-dataset)
 
+Github does not allow uploading the heaviest file under [data/Books Data with Category Language and Summary/Preprocessed_data.csv](), so I had to remove it from the commit. You can find it in the link above for Kaggle.
+
+
 ## Content
 1. [Project Structure](#project-structure)
 2. [Pipeline Design](#pipeline-design)
@@ -19,7 +22,7 @@ Data Source:
 Capstone Project
 |____data                                   # table setup script
 |    |____Book reviews                      # Source data
-|    |____Book Data with Categor...         # Source data
+|    |____Book Data with Categor...         # Source data (Did not upload)
 |    |____model                             # Output - Final tables store
 |____images                                 # images for document purposes
 |____Book Review Data Pipeline.ipynb        # Main Project workspace
