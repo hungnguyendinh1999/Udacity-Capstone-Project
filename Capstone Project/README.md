@@ -14,8 +14,8 @@ Github does not allow uploading the heaviest file under [data/Books Data with Ca
 ## Content
 1. [Project Structure](#project-structure)
 2. [Pipeline Design](#pipeline-design)
-3. [How to Run](#how-to-run)
-4. [Schema Design](#schema-design)
+3. [Schema Design](#schema-design)
+4. [Sample Queries](#sample-queries-to-test-data-model)
 
 # Project Structure
 ```
@@ -36,3 +36,11 @@ The pipeline is implemented locally in [the Jupyter notebook](Book Review Data P
 
 # Schema Design
 ![Data Model](images/data-model.png)
+
+# Sample Queries to test data model
+### Q1. Who are the authors of the top 5 Books with the highest AVG rating?
+![Query 1 answer](images/Q1.png)
+### Q2. What is the least popular book rating LANGUAGE in Spain?
+![Query 2 answer](images/Q2.png)
+### Q3. Following Q2, for that language, what are the MAX_rating and MIN_rating in canada?
+![Query 3 answer](images/Q3.png)
